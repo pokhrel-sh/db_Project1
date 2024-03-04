@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS "Priority";
-DROP TABLE IF EXISTS "Bug";
-DROP TABLE IF EXISTS "Framework";
-DROP TABLE IF EXISTS "Status";
-DROP TABLE IF EXISTS "Project";
-DROP TABLE IF EXISTS "Developer";
-DROP TABLE IF EXISTS "BugAssignment";
-DROP TABLE IF EXISTS "History";
+-- DROP TABLE IF EXISTS "Priority";
+-- DROP TABLE IF EXISTS "Bug";
+-- DROP TABLE IF EXISTS "Framework";
+-- DROP TABLE IF EXISTS "Status";
+-- DROP TABLE IF EXISTS "Project";
+-- DROP TABLE IF EXISTS "Developer";
+-- DROP TABLE IF EXISTS "BugAssignment";
+-- DROP TABLE IF EXISTS "History";
 
 
 
@@ -68,8 +68,9 @@ CREATE TABLE "BugAssignment" (
   "assignmentID" INTEGER NOT NULL UNIQUE,
   "bugID" INTEGER NOT NULL,
   "devID" INTEGER NOT NULL,
-  "devName" TEXT,
+  "devName" TEXT NOT NULL,
   PRIMARY KEY("assignmentID" AUTOINCREMENT),
+  FOREIGN KEY("bugID") REFERENCES "Bug"("bugID"),
   FOREIGN KEY("devID") REFERENCES "Developer"("devID"),
   FOREIGN KEY("devName") REFERENCES "Developer"("devName")
 );
